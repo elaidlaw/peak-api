@@ -5,21 +5,24 @@ from datetime import datetime
 
 
 # Shared properties
-class ClipBase(BaseModel):
-    link: str
-    user_id: int
-    camera_id: int
+class GPSBase(BaseModel):
+    longitude: float
+    latitude: float
     timestamp: datetime
 
 # Properties to receive via API on creation
-class ClipCreate(ClipBase):
+class GPSCreate(GPSBase):
     pass
+
+class GPSCreateMultiResponse(BaseModel):
+    count: int
 
 # Properties to receive via API on update
-class ClipUpdate(ClipBase):
+class GPSUpdate(GPSBase):
     pass
 
-class ClipInDBBase(ClipBase):
+class GPSInDBBase(GPSBase):
+    user_id: int
     id: Optional[int] = None
 
     class Config:
@@ -27,10 +30,10 @@ class ClipInDBBase(ClipBase):
 
 
 # Additional properties to return via API
-class Clip(ClipInDBBase):
+class GPS(GPSInDBBase):
     pass
 
 
 # Additional properties stored in DB
-class ClipInDB(ClipInDBBase):
+class GPSInDB(GPSInDBBase):
     pass

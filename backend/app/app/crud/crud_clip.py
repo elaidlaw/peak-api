@@ -4,7 +4,7 @@ from datetime import date
 from sqlalchemy.orm import Session
 from app.crud.base import CRUDBase
 from app.models.clip import Clip
-from app.schemas.clip import ClipCreate, ClipUpdate, ClipGet
+from app.schemas.clip import ClipCreate, ClipUpdate
 
 
 class CRUDClip(CRUDBase[Clip, ClipCreate, ClipUpdate]):

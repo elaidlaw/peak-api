@@ -40,3 +40,16 @@ def create_clip(
     """
     clip = crud.clip.create(db=db, obj_in=clip_in)
     return clip
+
+@router.delete("/", response_model=schemas.Clip)
+def create_clip(
+    *,
+    db: Session = Depends(deps.get_db),
+    clip_id: int,
+    current_user: models.User = Depends(deps.get_current_user),
+) -> Any:
+    """
+    Delete clip.
+    """
+    clip = crud.clip.remove(db=db, id=clip_id)
+    return clip
